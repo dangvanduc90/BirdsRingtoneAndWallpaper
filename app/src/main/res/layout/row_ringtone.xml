@@ -41,6 +41,8 @@
         android:layout_height="@dimen/_25sdp" />
     <ImageButton
         android:id="@+id/iconPlay"
+        android:clickable="false"
+        android:focusable="false"
         android:background="@null"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_weight="1"

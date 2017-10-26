@@ -1,6 +1,9 @@
-package com.changeringtone.birdrringtone.birdsringtoneandwallpaper;
+package com.changeringtone.birdrringtone.birdsringtoneandwallpaper.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +15,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.changeringtone.birdrringtone.birdsringtoneandwallpaper.DetailActivity;
+import com.changeringtone.birdrringtone.birdsringtoneandwallpaper.R;
+import com.changeringtone.birdrringtone.birdsringtoneandwallpaper.model.Song;
+
+import java.io.IOException;
 import java.util.List;
 
 public class ListViewRingToneAdapter extends ArrayAdapter<Song> {
@@ -48,12 +56,28 @@ public class ListViewRingToneAdapter extends ArrayAdapter<Song> {
         viewHolder.iconPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MediaPlayer player = MediaPlayer.create(mContext, Uri.parse(arrContext.get(position).getTitle()));
+                try {
+                    player.prepare();
+                    player.start();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Log.d("onclick", position + "");
             }
         });
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, DetailActivity.class);
+                intent.putExtra("position", position);
+                mContext.startActivity(intent);
+            }
+        });
+
         return convertView;
-        }
+    }
 
     private class ViewHolder {
         TextView titleRingTon, duringRingTon;

@@ -1,4 +1,4 @@
-package com.changeringtone.birdrringtone.birdsringtoneandwallpaper;
+package com.changeringtone.birdrringtone.birdsringtoneandwallpaper.model;
 
 public class Song {
     private String title;

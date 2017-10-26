@@ -1,8 +1,11 @@
-package com.changeringtone.birdrringtone.birdsringtoneandwallpaper;
+package com.changeringtone.birdrringtone.birdsringtoneandwallpaper.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.changeringtone.birdrringtone.birdsringtoneandwallpaper.FragmentRecommend;
+import com.changeringtone.birdrringtone.birdsringtoneandwallpaper.FragmentRingTone;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
     public ViewPagerAdapter(FragmentManager fm) {

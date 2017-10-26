@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.changeringtone.birdrringtone.birdsringtoneandwallpaper.adapter.ViewPagerAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
     ViewPager viewPager;

@@ -4,10 +4,12 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -26,13 +28,14 @@ public class ListViewRingToneAdapter extends ArrayAdapter<Song> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.row_ringtone, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.titleRingTon = convertView.findViewById(R.id.titleRingTon);
             viewHolder.duringRingTon = convertView.findViewById(R.id.duringRingTon);
+            viewHolder.iconPlay = convertView.findViewById(R.id.iconPlay);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -42,11 +45,18 @@ public class ListViewRingToneAdapter extends ArrayAdapter<Song> {
 
         viewHolder.titleRingTon.setText(Song.getTitle());
         viewHolder.duringRingTon.setText(Song.getDuring());
+        viewHolder.iconPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("onclick", position + "");
+            }
+        });
 
         return convertView;
         }
 
     private class ViewHolder {
         TextView titleRingTon, duringRingTon;
+        ImageButton iconPlay;
     }
 }

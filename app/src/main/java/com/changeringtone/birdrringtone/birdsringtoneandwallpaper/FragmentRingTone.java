@@ -1,7 +1,7 @@
 package com.changeringtone.birdrringtone.birdsringtoneandwallpaper;
 
 import android.content.res.AssetFileDescriptor;
-import android.media.MediaPlayer;
+import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -37,16 +37,22 @@ public class FragmentRingTone extends Fragment {
         String [] list;
         List<Song> danhsachSong = new ArrayList<>();
         try {
+//            byte[] art;
+            MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
             list = getActivity().getAssets().list(path);
             if (list.length > 0) {
-                MediaPlayer mp = new MediaPlayer();
+//                MediaPlayer mp = new MediaPlayer();
                 // This is a folder
                 for (String file : list) {
                     AssetFileDescriptor afd = getActivity().getAssets().openFd(file);
-                    mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                    int duration = mp.getDuration();
+                    metaRetriver.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+//                    art = metaRetriver.getEmbeddedPicture();
+//                    Bitmap songImage = BitmapFactory.decodeByteArray(art, 0, art.length);
+//                    album_art.setImageBitmap(songImage);
+                    String title = metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+                    long duration = Long.parseLong(metaRetriver.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
                     String timer = miliSecondsToTimer(duration);
-                    Song song = new Song(file, timer);
+                    Song song = new Song(title, timer);
                     danhsachSong.add(song);
                 }
             }

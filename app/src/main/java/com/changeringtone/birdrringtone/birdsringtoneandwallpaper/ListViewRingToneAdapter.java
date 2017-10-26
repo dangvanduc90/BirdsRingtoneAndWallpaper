@@ -10,14 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ListViewRingToneAdapter extends ArrayAdapter<Song> {
     private Context mContext;
     private int resource;
-    private ArrayList<Song> arrContext;
+    private List<Song> arrContext;
     
-    public ListViewRingToneAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<Song> objects) {
+    public ListViewRingToneAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Song> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.resource = resource;

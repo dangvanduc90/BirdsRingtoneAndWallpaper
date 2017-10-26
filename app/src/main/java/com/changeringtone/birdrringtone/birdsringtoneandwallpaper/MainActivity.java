@@ -31,6 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-
     }
+
 }
